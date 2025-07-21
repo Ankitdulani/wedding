@@ -45,6 +45,34 @@
             font-size: 12px;
             display: none; /* Hidden by default */
         }
+        .glowing-text {
+            font-family: 'Arial', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff; /* Base color for the text */
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7), /* Initial subtle glow */
+                         0 0 10px rgba(0, 255, 255, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
+            animation: glow-animation 2s infinite alternate ease-in-out; /* Apply the glow animation */
+        }
+
+        /* Keyframes for the glowing animation */
+        @keyframes glow-animation {
+            from {
+                text-shadow: 0 0 5px rgba(0, 255, 255, 0.7),
+                             0 0 10px rgba(0, 255, 255, 0.5);
+                box-shadow: 0 0 5px rgba(0, 255, 255, 0.4); /* Optional: box shadow for the background */
+            }
+            to {
+                text-shadow: 0 0 15px rgba(0, 255, 255, 1), /* Brighter glow */
+                             0 0 25px rgba(0, 255, 255, 0.8),
+                             0 0 40px rgba(0, 255, 255, 0.6);
+                box-shadow: 0 0 10px rgba(0, 255, 255, 0.6), /* Optional: stronger box shadow */
+                            0 0 20px rgba(0, 255, 255, 0.4);
+            }
+        }
     </style>
 </head>
 <body>
@@ -56,8 +84,11 @@
         ar
         ar-modes="webxr scene-viewer quick-look"
         camera-controls
+        autoplay
+        animation-name="Running"
         shadow-intensity="1"
-    >
+        <div class="glowing-text" slot="hotspot-1" data-position="0 1.5 0" data-normal="0 1 0">
+                You are invits to our wedding</div>
         <button slot="ar-button" id="ar-button">
             View in your space
         </button>
